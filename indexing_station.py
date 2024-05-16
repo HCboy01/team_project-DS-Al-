@@ -57,9 +57,14 @@ def station_ls() :
                     station_ls[cur_line[i]].append([cur_line[i - 1], cur_line[i + 1]])
     return(station_ls)
 
-'''
+
 station_mp = station_ls()
-print(hwanseung)
+'''print(hwanseung)
 print(station_mp["양주"])
 print(station_mp["시청"])
 print(station_mp["진접"])'''
+
+'''
+key = list(station_mp.keys())
+for i in range(len(key)) :
+    print("역 : {0}, 인접 역 : {1}".format(key[i], station_mp[key[i]]))'''

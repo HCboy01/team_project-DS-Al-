@@ -10,12 +10,14 @@ def find_path(start, end) :
     while (True) :
         cur_st = BFS_ls.popleft() # 현재 역
         cur_path = path[cur_st][0] # 현재 역까지 온 경로
-
-        if cur_st == end :
-            return(cur_path)
-        
         time = path[cur_st][1]
+
+        print("현재역 = {0}, 현재역까지 온 경로 = {1}, 오는데 걸린 시간 {2}".format(cur_st, cur_path, time)) # 테스트 코드
+        if cur_st == end :
+            return(cur_path, time)
+        
         for i in range(len(station_ls[cur_st])) : # 다음역 찾기
+            temp = time
             if (i != 0) : # 환승 일때 시간만 2분 추가
                 time += 2
             for j in range(len(station_ls[cur_st][i])) : # 해당 호선의 다음 역에 대해서
@@ -29,7 +31,7 @@ def find_path(start, end) :
                     BFS_ls.append(next_st)
                     next_path = cur_path + [next_st]
                     path[next_st] = [next_path, time + 2]
-            time -= 2
+            time = temp
 
 
 
@@ -38,5 +40,5 @@ def find_path(start, end) :
 
 
 #start, end = map(int, input().split())
-start, end = "양주", "홍대입구"
+start, end = "도봉", "상계"
 print(find_path(start, end))
