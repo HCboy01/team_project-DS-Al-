@@ -12,6 +12,8 @@ def station_ls() :
             10 : ["신당", 9]}
     return (station_ls)
 '''
+global hwanseung
+hwanseung = []
 class station_map :
     line = [0 for i in range(6)]
     line[1] = "소요산 - 동두천 - 보산 - 동두천중앙 - 지행 - 덕정 - 덕계 - 양주 - 녹양 -  가능 -  의정부 - 회룡 -  망월사 - 도봉산 - 도봉 -  방학 -  창동 -  녹천 -  월계 -  성북 -  석계 -  신이문 - 외대앞 - 회기 -  청량리 - 제기동 - 신설동 - 동묘앞 - 동대문 - 종로5가 -  종로3가 -  종각 -  시청 -  서울역 - 남영 -  용산 -  노량진 - 대방 -  신길 -  영등포 - 신도림 - 구로 -  구일 -  개봉 -  오류동 - 온수 -  역곡 -  소사 -  부천 -  중동 -  송내 -  부개 -  부평 -  백운 -  동암 -  간석 -  주안 -  도화 -  제물포 - 도원 -  동인천 - 인천 -  광명 -  가산디지털단지 - 독산 -  금천구청 -  석수 -  관악 -  안양 -  명학 -  금정 -  군포 -  당정 -  의왕 -  성균관대 -  화서 -  수원 -  세류 -  병점 -  세마 -  오산대 - 오산 -  진위 -  송탄 -  서정리 - 지제 -  평택 -  성환 - 직산 - 두정 -  천안 -  봉명 -  쌍용 -  아산 -  배방 -  온양온천 -  신창 -  서동탄"
@@ -39,25 +41,25 @@ def station_ls() :
                 else : # 아니면 인접리스트로 전역 다음역 추가해줌
                     station_ls[cur_line[i]] = [[cur_line[i - 1], cur_line[i + 1]]]
             else : # 딕셔너리에 있으면 (환승역이라는 의미)
+                global hwanseung # 환승역 저장하는 임시 코드임당
+                if cur_line[i] not in hwanseung :
+                    hwanseung.append(cur_line[i])
                 if i == 0 : # 전거랑 같은방식인데 append 해줌. 구조는 시청역의 경우[['종각', '서울역'], ['을지로입구', '충정로']] 처럼 될거에요
                     if (cur_line[0] == cur_line[-1]) :
-                        station_ls[cur_line[i]].append([[cur_line[1], cur_line[-2]]])
+                        station_ls[cur_line[i]].append([cur_line[1], cur_line[-2]])
                     else :
-                        station_ls[cur_line[i]].append([[cur_line[i + 1]]])
+                        station_ls[cur_line[i]].append([cur_line[i + 1]])
                 elif i == len(cur_line) - 1 :
                     if (cur_line[0] == cur_line[-1]) :
                         continue
-                    station_ls[cur_line[i]].append([[cur_line[i - 1]]])
+                    station_ls[cur_line[i]].append([cur_line[i - 1]])
                 else :
-                    station_ls[cur_line[i]].append([[cur_line[i - 1], cur_line[i + 1]]])
+                    station_ls[cur_line[i]].append([cur_line[i - 1], cur_line[i + 1]])
     return(station_ls)
 
-def indexing(station, station_ls) :
-    for i in range(len(station_ls)) :
-        if station_ls[i + 1][0] == station :
-            return (i + 1)
-
-station_ls = station_ls()
-print(station_ls["양주"])
-print(station_ls["시청"])
-print(station_ls["진접"])
+'''
+station_mp = station_ls()
+print(hwanseung)
+print(station_mp["양주"])
+print(station_mp["시청"])
+print(station_mp["진접"])'''
