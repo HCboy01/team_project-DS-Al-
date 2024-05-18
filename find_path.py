@@ -17,9 +17,9 @@ def bfs_path(start, end):
 
         for line in station_ls[cur_st]:
             for next_st in line:
-                next_time = cur_time + 1
+                next_time = cur_time + 2
                 if cur_st in indexing_station.hwanseung:
-                    next_time += 4
+                    next_time += 3
                 if next_st in path:
                     if next_time < path[next_st][1]:
                         path[next_st] = [cur_path + [next_st], next_time]
@@ -48,14 +48,14 @@ def dijkstra_path(start, end):
 
         for line in station_ls[cur_st]:
             for next_st in line:
-                next_time = cur_time + 1
+                next_time = cur_time + 2
                 if cur_st in indexing_station.hwanseung:
-                    next_time += 4
+                    next_time += 3
                 heapq.heappush(min_heap, (next_time, next_st, cur_path + [next_st]))
 
     return None, float('inf')
 
-start, end = "도봉", "마천"
+start, end = "도봉", "미아"
 start_time = time.time()
 print("BFS Path:", bfs_path(start, end))
 end_time = time.time()
