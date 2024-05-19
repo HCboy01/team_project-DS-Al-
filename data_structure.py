@@ -2,7 +2,6 @@ DEFAULT_CAPACITY = 100
 class SortingDeQue:
 	def __init__(self):
 		self._data = [[0,2147483647] for i in range(DEFAULT_CAPACITY + 1)]
-		self._rear = 0
 		self._front = 0
 		self._size = 0
 
@@ -10,13 +9,13 @@ class SortingDeQue:
 		return (self._size)
 
 	def is_empty(self):
-		if (self._rear - self._front == 0) :
+		if (self._size - self._front == 0) :
 			return (1)
 		else :
 			return (0)
 	
 	def is_full(self):
-		if ((DEFAULT_CAPACITY + self._rear + 2) % (DEFAULT_CAPACITY + 1) == self._front) :
+		if self._size == DEFAULT_CAPACITY :
 			return (1)
 		else :
 			return (0)
