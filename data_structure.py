@@ -1,4 +1,4 @@
-DEFAULT_CAPACITY = 30
+DEFAULT_CAPACITY = 100
 class SortingDeQue:
 	def __init__(self):
 		self._data = [[0,2147483647] for i in range(DEFAULT_CAPACITY + 1)]
