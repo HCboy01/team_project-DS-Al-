@@ -21,9 +21,9 @@ def main() :
     
     
     start_time = time.time()
-    print("a_star Path:", a_star.find_path(start, end))
+    print("bidirectional_dijkstra Path:", bidirectional_dijkstra.find_path(start, end))
     end_time = time.time()
-    print(f"a_star time: {end_time-start_time}")
+    print(f"bidirectional_dijkstra time: {end_time-start_time}")
 
 
 main()
