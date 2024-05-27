@@ -28,7 +28,7 @@ class SortingDeQue:
 	def popleft(self):
 		target = self._data[self._front]
 		self._data[self._front] = [0,2147483647]
-		self.quick_sort(self._data)
+		self._data = self.quick_sort(self._data)
 		self._size -= 1
 		return(target)
 	
@@ -36,7 +36,7 @@ class SortingDeQue:
 		if (self.is_full()) :
 			raise Exception('Queue is full')
 		self._data[self._size] = data
-		self.quick_sort(self._data)
+		self._data = self.quick_sort(self._data)
 		self._size += 1
 		
 	def quick_sort(self, arr) :

@@ -1,7 +1,7 @@
 import indexing_station
 import heapq
 
-def bidirectional_dijkstra(start, end):
+def find_path(start, end):
     station_ls = indexing_station.station_ls()
     
     # Initialize forward and backward search
